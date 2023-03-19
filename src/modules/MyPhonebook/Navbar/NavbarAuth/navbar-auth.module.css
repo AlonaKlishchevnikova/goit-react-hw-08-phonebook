@@ -1,0 +1,11 @@
+.link {
+    display: inline-block;
+    margin: auto 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;}
+
+
+   .link:global(.active) {
+        font-weight: bold;
+    }

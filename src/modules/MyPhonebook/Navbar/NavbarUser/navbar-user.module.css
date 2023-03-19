@@ -1,0 +1,27 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+.btn {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.btn:hover, .btn:focus {
+    scale: 1.02;
+     background-color: black;
+     color: #fff;
+}

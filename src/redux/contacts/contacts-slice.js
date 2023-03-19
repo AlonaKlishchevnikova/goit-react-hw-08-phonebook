@@ -48,6 +48,7 @@ const contactsSlice = createSlice({
                 store.loading = false;
                 store.error = payload;
             })
+       
     }
 })
 export default contactsSlice.reducer;

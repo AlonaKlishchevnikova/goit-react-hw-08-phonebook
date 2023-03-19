@@ -1,25 +1,29 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchAllContacts } from '../redux/contacts/contacts-operations';
 
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import  Navbar  from "../modules/MyPhonebook/Navbar/Navbar";
+import {store, persistor }from "../redux/store";
+import UserRoutes from 'pages/UserRoutes';
+import AuthLayout from 'modules/AuthLayout/AuthLayout';
 
-import MyPhonebookForm from '../modules/MyPhonebook/MyPhonebookForm/MyPhonebookForm';
-import MyPhonebookList from '../modules/MyPhonebook/MyPhonebookList/MyPhonebookList';
-import MyPhonebookFilter from '../modules/MyPhonebook/MyPhonebookFilter/MyPhonebookFilter';
 
 const App = () => {
-   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAllContacts());
-  }, [dispatch]);
+  
   return (
+
+    
     <div>
-      <h1>Phonebook</h1>
-      <MyPhonebookForm />
-      <h2>Contacts</h2>
-      <MyPhonebookFilter />
-      <MyPhonebookList />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AuthLayout>
+        <BrowserRouter basename="/goit-react-hw-08-phonebook">
+          <Navbar />
+          <UserRoutes />
+            </BrowserRouter>
+            </AuthLayout>
+          </PersistGate>
+    </Provider>
     </div>
   );
 };

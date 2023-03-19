@@ -4,6 +4,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filter/filter-slice';
 import { getFilter } from 'redux/filter/filter-selectors';
+import styles from './my-phonebook-filter.module.css'
 
 const Filter = () => {
   const onSetFilter = payload => {
@@ -19,8 +20,8 @@ const Filter = () => {
   const filter = useSelector(getFilter);
 
   return (
-    <div>
-      <label  htmlFor="filter">
+    <div className={styles.wrraper}>
+      <label className={styles.label}  htmlFor="filter">
         Find contacts by name
       </label>
       <input
@@ -28,6 +29,7 @@ const Filter = () => {
         name="filter"
         onChange={updateFilter}
         value={filter}
+        className ={styles.filter}
       />
     </div>
   );

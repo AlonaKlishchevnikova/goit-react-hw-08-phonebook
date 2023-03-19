@@ -1,0 +1,24 @@
+.wrraper{
+    margin: 50px 50px;
+}
+
+.label {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 10px 30px;
+
+}
+
+.filter {
+    width: 300px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px;
+     
+  
+}
+
+.filter:hover, .filter:focus {
+    scale: 1.02;
+}

@@ -1,30 +1,49 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { fetchAddContact } from '../../../redux/contacts/contacts-operations';
 
-import {useDispatch } from 'react-redux';
+
+
+import { useDispatch, useSelector } from 'react-redux';
+import styles from './my-phonebook-form.module.css';
+import { nanoid } from 'nanoid';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
-
+  const contacts = useSelector(state => state.contacts.items);
+ 
+ 
 
   const handleSubmit = event => {
     event.preventDefault();
+        const verificationContact = contacts.find(
+      el => el.name.toLowerCase() === name.toLowerCase()
+    );
 
+    if (!verificationContact) {
+    
+      resetForm();
+      return  dispatch(fetchAddContact({ name, number, id: nanoid()}));
 
+    } else {
+      alert(`${name} is already in contacts`);
+    }
   
-    dispatch(fetchAddContact ({ name, number }));
+
+  };
+
+  const resetForm = () => {
     setName('');
     setNumber('');
+
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">
+    <form className={styles.form } onSubmit={handleSubmit}>
+      <label className={styles.label} htmlFor="name">
         Name
       </label>
       <input
@@ -35,8 +54,9 @@ const ContactForm = () => {
         required
         value={name}
         onChange={event => setName(event.target.value)}
+        className={styles.input}
       />
-      <label htmlFor="number">
+      <label className={styles.label} htmlFor="number">
         Number
       </label>
       <input
@@ -47,8 +67,9 @@ const ContactForm = () => {
         required
         value={number}
         onChange={event => setNumber(event.target.value)}
+        className={styles.input}
       />
-      <button type="submit">Add Contact</button>
+      <button className={styles.btn}  type="submit">Add Contact</button>
     </form>
   );
 };

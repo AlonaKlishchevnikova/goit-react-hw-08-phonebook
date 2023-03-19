@@ -1,0 +1,9 @@
+.wrapper {
+  padding: 15px;
+  display: flex;
+
+  border-bottom: solid  6px;
+  border-top: solid 3px;
+  width: 450px;
+
+}
