@@ -6,7 +6,7 @@ import { fetchAddContact } from '../../../redux/contacts/contacts-operations';
 
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './my-phonebook-form.module.css';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid'; 
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const ContactForm = () => {
         onChange={event => setNumber(event.target.value)}
         className={styles.input}
       />
-      <button className={styles.btn}  type="submit">Add Contact</button>
+      <button className={styles.btn} type="submit">Add Contact</button>
     </form>
   );
 };
